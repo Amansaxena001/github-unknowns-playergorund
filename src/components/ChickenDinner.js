@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import queryString from "query-string";
 import { Link } from "react-router-dom";
-import { battle } from "../utils/api";
-import PlayerPreview from "./PlayerPreview";
-import Loading from "./Loading";
+import { battle } from "../utils/apiCalls";
 import PlayerView from "./PlayerView";
 
 // Private
@@ -52,13 +50,14 @@ function Player({ label, score, profile }) {
     </div>
   );
 }
+
 Player.propTypes = {
   label: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   profile: PropTypes.object.isRequired,
 };
 
-// Main
+// Main component
 class Results extends React.Component {
   state = {
     winner: null,
@@ -68,8 +67,8 @@ class Results extends React.Component {
   };
   componentDidMount = () => {
     const players = queryString.parse(this.props.location.search);
-    const { playerOneName, playerTwoName } = players;
-    battle([playerOneName, playerTwoName]).then((players) => {
+    const { playerOne, playerTwo } = players;
+    battle([playerOne, playerTwo]).then((players) => {
       players
         ? this.setState(() => ({
             winner: players[0],
@@ -89,11 +88,6 @@ class Results extends React.Component {
     const winner = this.state.winner;
     const loser = this.state.loser;
     const loading = this.state.loading;
-
-    // loading...
-    if (loading) {
-      return <Loading text="hee haa" speed={50} />;
-    }
 
     // error!
     if (error) {

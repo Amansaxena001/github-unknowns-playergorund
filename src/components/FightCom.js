@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 import PlayerView from "./PlayerView";
-function PlayerData() {
+
+function PlayerData({ onSubmit, id }) {
   const [name, setName] = useState("");
-  const [id, setId] = useState(null);
 
   const label = "Username";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(setName(name), setId(id));
+    onSubmit(id, name);
   };
 
   return (
@@ -44,9 +44,12 @@ const FightCom = () => {
 
   const handleSubmit = (id, name) => {
     setState({
-      [`${id}Name`]: name,
+      ...state,
+      [`${id}`]: name,
       [`${id}Img`]: `https://github.com/${name}.png?size=200`,
     });
+
+    console.log(id, name);
   };
 
   const handleReset = (id) => {
@@ -63,11 +66,14 @@ const FightCom = () => {
   return (
     <div>
       {!playerOne && (
-        <PlayerData id="playerOne" label="playerOne" onSubmit={handleSubmit} />
+        <PlayerData id="playerOne" label="player One" onSubmit={handleSubmit} />
       )}
-      {playerOne && playerOneImg && (
+      {!!playerOne && !!playerOneImg && (
         <PlayerView username={playerOne} avatar={playerOneImg}>
-          <button className="reset" onClick={() => handleReset("playerOne")}>
+          <button
+            className="reset btn-success"
+            onClick={() => handleReset("playerOne")}
+          >
             Reset
           </button>
         </PlayerView>
