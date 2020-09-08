@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getUser } from "../../config/githupConfig";
+import { getUser } from "../../secret/githupConfig";
 
 const { id, sec } = getUser();
 
