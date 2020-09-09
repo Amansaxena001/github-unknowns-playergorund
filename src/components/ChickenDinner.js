@@ -18,6 +18,7 @@ function Profile({ info }) {
     public_repos,
     blog,
   } = info;
+
   return (
     <PlayerView username={login} avatar={avatar_url}>
       <ul className="space-list-items">
@@ -35,6 +36,8 @@ function Profile({ info }) {
       </ul>
     </PlayerView>
   );
+
+  return <div></div>;
 }
 Profile.propTypes = {
   info: PropTypes.object.isRequired,
@@ -58,14 +61,13 @@ Player.propTypes = {
 };
 
 // Main component
-class Results extends React.Component {
+class ChickednDinner extends React.Component {
   state = {
-    winner: null,
-    loser: null,
+    winner: 0,
+    loser: 0,
     error: null,
-    loading: true,
   };
-  componentDidMount = () => {
+  componentDidMount() {
     const players = queryString.parse(this.props.location.search);
     const { playerOne, playerTwo } = players;
     battle([playerOne, playerTwo]).then((players) => {
@@ -74,20 +76,18 @@ class Results extends React.Component {
             winner: players[0],
             loser: players[1],
             error: null,
-            loading: false,
           }))
         : this.setState(() => ({
             error:
               "Looks like there was an error. Check that both users exist on Github",
-            loading: false,
           }));
     });
-  };
+    console.log(players);
+  }
   render = () => {
     const error = this.state.error;
     const winner = this.state.winner;
     const loser = this.state.loser;
-    const loading = this.state.loading;
 
     // error!
     if (error) {
@@ -95,16 +95,14 @@ class Results extends React.Component {
         <div>
           <p>{"error!"}</p>
           <p>{this.state.error}</p>
-          <Link to="/battle">Reset</Link>
+          <Link to="/fight">Reset</Link>
         </div>
       );
     }
 
-    // console.log(this.state)
     return (
       <div>
         <div className="row">
-          {/*{JSON.stringify(this.state)}*/}
           <Player
             label="Winner"
             score={winner.score}
@@ -113,7 +111,7 @@ class Results extends React.Component {
           <Player label="Loser" score={loser.score} profile={loser.profile} />
         </div>
         <div className="row">
-          <Link className="button" to="/battle">
+          <Link className="button" to="/fight">
             Another Battle!
           </Link>
         </div>
@@ -122,4 +120,4 @@ class Results extends React.Component {
   };
 }
 
-export default Results;
+export default ChickednDinner;

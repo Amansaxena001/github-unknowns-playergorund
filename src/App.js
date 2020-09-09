@@ -13,18 +13,18 @@ import NotFound from "./components/NotFound";
 import ChickenDinner from "./components/ChickenDinner";
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="App">
         <NavCom />
         <Switch>
           <Route exact path="/" component={HomeCom} />
           <Route exact path="/fight" component={FightCom} />
           <Route exact path="/about" component={AboutCom} />
-          <Route path="/battle/results" component={ChickenDinner} />
+          <Route path="/fight/results" component={ChickenDinner} />
           <Route component={NotFound} />
         </Switch>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

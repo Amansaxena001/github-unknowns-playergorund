@@ -1,11 +1,19 @@
 import axios from "axios";
+require("dotenv").config();
 
-import { getUser } from "../../secret/githupConfig";
-
-const { id, sec } = getUser();
+//GIT HUB API CALLS
+const ID = process.env.REACT_APP_CLIENT_ID;
+const SECRET = process.env.REACT_APP_CLIENT_SECRET;
+const getUser = () => {
+  return {
+    id: ID,
+    secret: SECRET,
+  };
+};
+const { id, secret } = getUser();
 
 //apply params to URL
-const params = `client_id=${id}&client_secret=${sec}`;
+const params = `client_id=${id}&client_secret=${secret}`;
 
 //Get user profiles
 
@@ -42,16 +50,15 @@ const getUserData = (player) => {
   );
 };
 
-function handleError(error) {
-  console.warn(error);
-  return null;
-}
-
 // who is the winner
 function sortPlayers(players) {
   return players.sort((a, b) => b.score - a.score);
 }
 
+function handleError(error) {
+  console.warn(error);
+  return null;
+}
 // battle!
 export function battle(players) {
   return Promise.all(players.map(getUserData))

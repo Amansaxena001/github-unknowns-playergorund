@@ -54,7 +54,8 @@ const FightCom = () => {
 
   const handleReset = (id) => {
     setState({
-      [`${id}Name`]: "",
+      ...state,
+      [`${id}`]: "",
       [`${id}Img`]: null,
     });
   };
@@ -82,7 +83,7 @@ const FightCom = () => {
         <PlayerData id="playerTwo" label="Player Two" onSubmit={handleSubmit} />
       )}
       {!!playerTwo && !!playerTwoImg && (
-        <PlayerView username={playerTwo} avatar={playerTwo}>
+        <PlayerView username={playerTwo} avatar={playerTwoImg}>
           <button className="reset" onClick={() => handleReset("playerTwo")}>
             Reset
           </button>
