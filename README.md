@@ -14,7 +14,7 @@ You will also see any lint errors in the console.
 
 ### `Install dependencies`
 
-**npm install
+npm install
 
 ### `Manually Setup GitHub API Access ID and Secret`
 
