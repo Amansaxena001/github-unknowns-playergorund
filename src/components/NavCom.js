@@ -3,7 +3,7 @@ import React from "react";
 function NavCom() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light active">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light ">
         <a className="navbar-brand" href="/">
           Home
         </a>
@@ -20,12 +20,12 @@ function NavCom() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="active">
               <a className="nav-link" href="/fight">
                 Fight<span className="sr-only">(current)</span>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item active">
               <a className="nav-link" href="/about">
                 About
               </a>
