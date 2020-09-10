@@ -35,11 +35,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Days wise progress
 
-Day 1. Boiler Plate code setup with some packages such as Axios, antD design.
-Day 2. Setting up gitApi to start developing core functionalities.
-Day 3. Implementation of components making wireframes to reality.
-Day 4. Testing App to see everything working fine.
-FINAL- Merging development branch to master.
+Day 1. Boiler Plate code setup with some packages such as Axios, antD design. <br /> 
+Day 2. Setting up gitApi to start developing core functionalities. <br /> 
+Day 3. Implementation of components making wireframes to reality. <br /> 
+Day 4. Testing App to see everything working fine. <br /> 
+FINAL- Merging development branch to master. <br /> 
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
